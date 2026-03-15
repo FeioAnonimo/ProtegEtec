@@ -21,7 +21,7 @@ class Login {
             if (password_verify($senha, $user['senha'])) {
                 $_SESSION['logado'] = true;
                 $_SESSION['email'] = $user['email'];
-                header("Location: welcome.php");
+                header("Location: main.php");
                 exit();
             }
         }
@@ -42,4 +42,7 @@ class Login {
     }
 }
 
-$log = new Login();
+if (isset($_POST['entrar'])) {
+    $login = new Login();
+    echo $login->logar($_POST['userename'], $_POST['email'], $_POST['senha']);
+}
