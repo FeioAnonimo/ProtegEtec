@@ -28,16 +28,18 @@ class Login {
         return "Email ou senha inválidos.";
     }
 
-    public function verificarLogado() {
+    public static function verificarLogado() {
         if (!$_SESSION['logado']) {
             header("Location: index.php");
             exit();
         }
     }
 
-    public function deslogar() {
+    public static function deslogar() {
         session_destroy();
         header("Location: index.php");
         exit();
     }
 }
+
+$log = new Login();
